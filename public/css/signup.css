@@ -1,0 +1,110 @@
+/* PHONE */
+/* BODY */
+.signup-img-col {
+  display: none;
+}
+
+.signup-div {
+  width: 100%;
+}
+
+/* FORM */
+form {
+  padding: 15% 0;
+}
+
+.submit-div {
+  margin-top: 15%;
+}
+
+.forgotten-password {
+  float: right;
+  padding-top: 1rem;
+}
+
+/* HORIZONTAL LINE */
+hr.signup-hr {
+  border: 2px solid #0045d1;
+  border-radius: 6px;
+  width: 100%;
+  margin: auto;
+}
+
+/* SOCIAL SIGNUP */
+.signup-buttons {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.fa-google, .fa-facebook {
+  font-size: 1.5rem;
+}
+
+.btn.btn-google, .btn.btn-facebook {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.btn.btn-facebook {
+  margin: 5% 0;
+}
+
+
+/* PC MEDIA QUERY */
+@media (min-width: 992px) {
+  .signup-img-col {
+    display: block;
+  }
+
+  .signup-div {
+    width: 100%;
+  }
+
+  .col-md.signup-img-col {
+    padding: 0;
+  }
+
+  /* IMAGE */
+  .signup-img {
+    width: 100%;
+  }
+
+  .signup-image {
+    width: 100%;
+  }
+
+  /* FORM */
+  form {
+    padding: 10%;
+  }
+
+  .submit-div {
+    margin-top: 5%;
+  }
+
+  hr.signup-hr {
+    width: 80%;
+  }
+
+  /* SOCIAL SIGNUP */
+  .signup-buttons {
+    margin-top: 10%;
+  }
+
+  .fa-google, .fa-facebook {
+    font-size: 2rem;
+  }
+
+  .btn.btn-google, .btn.btn-facebook {
+    font-size: 1.2rem;
+    width: 40%;
+  }
+
+  .btn.btn-facebook {
+    margin: auto;
+  }
+
+  .dont-have-an-account {
+    padding: 5% 10% 0 10%;
+  }
+}

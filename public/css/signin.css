@@ -1,0 +1,103 @@
+/* PHONE */
+/* BODY */
+.signin-img-col {
+  display: none;
+}
+
+.signin-div {
+  width: 100%;
+}
+
+/* FORM */
+form {
+  padding: 15% 0;
+}
+
+.submit-div {
+  margin-top: 20%;
+}
+
+.forgotten-password {
+  float: right;
+  padding-top: 1rem;
+}
+
+/* HORIZONTAL LINE  */
+hr.signin-hr {
+  border: 2px solid #0045d1;
+  border-radius: 6px;
+  width: 100%;
+  margin: auto;
+}
+
+/* SOCIAL SIGNIN */
+.signin-buttons {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.fa-google, .fa-facebook {
+  font-size: 1.5rem;
+}
+
+.btn.btn-google, .btn.btn-facebook {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.btn.btn-facebook {
+  margin: 5% 0;
+}
+
+
+/* PC MEDIA QUERY */
+@media (min-width: 992px) {
+  .signin-img-col {
+    display: block;
+  }
+
+  .col-md.signin-img-col {
+    padding: 0;
+  }
+
+  /* IMAGE */
+  .signin-img {
+    width: 100%;
+  }
+
+  /* FORM */
+  form {
+    padding: 20% 10% 10%;
+  }
+
+  .submit-div {
+    margin-top: 10%;
+  }
+
+  hr.signin-hr {
+    width: 80%;
+  }
+
+  /* SOCIAL SIGNIN */
+  .signin-buttons {
+    margin-top: 10%;
+  }
+
+  .fa-google, .fa-facebook {
+    font-size: 2rem;
+  }
+
+  .btn.btn-google, .btn.btn-facebook {
+    font-size: 1.2rem;
+    width: 40%;
+  }
+
+  .btn.btn-facebook {
+    margin: auto;
+  }
+
+  .dont-have-an-account {
+    padding: 5% 10%;
+  }
+
+}
