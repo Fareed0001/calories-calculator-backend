@@ -1,0 +1,46 @@
+/* PHONE MEDIA QUERY */
+.contact-content {
+  margin: 25% auto 5%;
+  color: #810CA8;
+}
+
+.contact-image-div {
+  text-align: center;
+}
+
+.contact-image {
+  width: 20%;
+}
+
+.contact-header {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+label {
+  font-weight: 500;
+}
+
+/* PC MEDIA QUERY */
+@media (min-width: 992px) {
+  .contact-content {
+    margin: 12% 0 5% 0;
+  }
+
+  .contact-image {
+    width: 6%;
+  }
+
+  .contact-header {
+    font-size: 2.2rem;
+    margin-bottom: 4%;
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
+
+  div.contact-button {
+    margin-top: 4%;
+  }
+}

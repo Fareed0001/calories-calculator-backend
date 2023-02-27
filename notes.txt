@@ -1,0 +1,4 @@
+- After successfully integrating backend into the project
+- from powershell give yourself authorization and initiate nodemon in terminal
+- integrate git and github version control into the project 
+- 
