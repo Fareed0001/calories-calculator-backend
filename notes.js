@@ -5,6 +5,6 @@
 FOR SUBSEQUENT VERSION control- (git init) to initiate git
 - (git add .) to add everything in the project directory
 - (git status) to confirm if the files have been added to the staging area
-- (git commit -m "first upload") to commit the stages files 
+- (git commit -m "frst upload") to commit the stages files 
 - git push -u origin main
 
