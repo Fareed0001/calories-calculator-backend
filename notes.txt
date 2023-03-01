@@ -8,5 +8,8 @@ FOR SUBSEQUENT VERSION control- (git init) to initiate git
 - (git commit -m "first upload") to commit the stages files 
 - git push -u origin main
 
-[8:33 PM, 2/27/2023] Ace: https://github.com/Fareed0001/calories-calculator-backend
-[8:34 PM, 2/27/2023] Ace: so as to not ruin the frontend and to keep it as a reference file, I created another repository to show  my progress
+MONGOOSE DATABASE
+- after creating a schema and a model to follow that schema, subsequent mongoose codes are added
+- in terminal enter mongod to start mongoose database server connection
+- in another terminal enter mongosh so as to start your new database, use "show dbs" to see if your database as been successfully added to the list of databases
+- check robo3t to monitor changes in database

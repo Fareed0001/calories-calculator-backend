@@ -25,26 +25,22 @@
         <img class="signup-img" src="images\style 1.jpg" alt="">
       </div>
       <div class="col-md">
-        <form class="" action="" method="post" validate>
+        <form class="" action="/signup" method="POST" validate>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control form-control-lg" id="signup-firstname" placeholder="First name" required>
+            <input type="text" name="firstName" class="form-control form-control-lg" id="signup-firstname" placeholder="First name" required>
             <label for="signup-firstname">First name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control form-control-lg" id="signup-lastname" placeholder="Last name" required>
+            <input type="text" name="lastName" class="form-control form-control-lg" id="signup-lastname" placeholder="Last name" required>
             <label for="signup-lastname">Last name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control form-control-lg" id="signup-email" placeholder="email address" required>
+            <input type="email" name="username" class="form-control form-control-lg" id="signup-email" placeholder="email address" required>
             <label for="signup-email">Email address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control form-control-lg" id="floatingInput" placeholder="Password" required>
+            <input type="password" name="password" class="form-control form-control-lg" id="floatingInput" placeholder="Password" required>
             <label for="floatingPassword">Password</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control form-control-lg" id="floatingInput" placeholder="Password" required>
-            <label for="floatingPassword">Re-write password</label>
           </div>
           <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>

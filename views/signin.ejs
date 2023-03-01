@@ -25,13 +25,13 @@
         <img class="signin-img" src="images\style 1.jpg" alt="">
       </div>
       <div class="col-md signin-form-col">
-        <form class="" action="" method="post" validate>
+        <form action="/signin" method="POST" validate>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control form-control-lg" id="signin-email" placeholder="email address" required>
+            <input type="email" name="username" class="form-control form-control-lg" id="signin-email" placeholder="email address" required>
             <label for="signin-email">Email address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control form-control-lg" id="floatingInput" placeholder="Password" required>
+            <input type="password" name="password" class="form-control form-control-lg" id="floatingInput" placeholder="Password" required>
             <label for="floatingPassword">Password</label>
           </div>
           <div class="mb-3 submit-div">
