@@ -47,7 +47,8 @@ const userDetailSchema = new mongoose.Schema({ //This is to change our schema in
   firstname: String,
   lastname: String,
   username: String,
-  password: String
+  password: String,
+  picture: String 
 });
 
 
@@ -81,8 +82,70 @@ passport.deserializeUser(function(user, cb) { //this destroys the cookie
   });
 });
 
+//google strategy code from passport site "https://www.passportjs.org/packages/passport-google-oauth20/"
+passport.use(new GoogleStrategy({
+  clientID: process.env.CLIENT_ID, //the client id stored in the .env file
+  clientSecret: process.env.CLIENT_SECRET, //the client secret code stored in the .env file
+  callbackURL: "http://localhost:3000/auth/google/caloriesCalculator", //the Authorised redirect URIs you set in the google developer console (inside credentions, OAuth 2.0 Client IDs click the project name and scroll down)
+  // the path the callbackURL hits up in the server is http://localhost:3000/auth/google/caloriesCalculator
+  userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo" //this makes retrieving user data instead of from the deprecated google plus, it should use the userinfo
+  //be careful of typos
+}, function(accessToken, refreshToken, profile, cb) { //here is where google sends back the access token that will allow us the user data
+  // console.log(profile); //this is to log the user profile that we get back from the get request on /auth/google route
+  User.findOrCreate({ //we use the data we got back from google ie user email to find a user if they exist, if they dont to create one
+    username: profile.emails[0].value, //this adds it as a new mail so we can dodge an error
+    googleId: profile.id //when a new user gets created, this finds if the user googleId record already exists in our database, in which case we save all the data associated with that id otherwise we create on our database and save that information for the future   
+  }, function(err, user) {
+    const newUser = new userDetail ({ //This would save the new user details into userDetail document
+      newUser_id: user.id,  
+      firstname: profile._json.given_name,
+      lastname: profile._json.family_name,
+      username:  profile._json.email,
+      password: profile._json.sub,
+      picture: profile._json.picture
+    });
+    newUser.save();
+    
+    
+    return cb(err, user);
+  });
+}
+));
+
+
+
+
+
+
 // ROUTES
-// HOME ROUTE
+// AUTHENTICATION ROUTES 
+//path for google button. this code was gotten from the passport-google-oauth20 docs (https://www.passportjs.org/packages/passport-google-oauth20/)
+app.get("/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"] //this increases the scope to accept email so that we can bypass an error
+  }) //this will authenticate the user using google strategy. we are telling google that we need the users profile which includes their username and id
+  //the code creates a pop-up that allows users sign in into their google accounts
+  //it will initiate
+);
+
+//after user is authenticated using google, they are sent to this route
+app.get("/auth/google/caloriesCalculator", //this is the route you provided in the google app console under credentials, OAuth 2.0 Client IDs, Authorised redirect URIs
+  passport.authenticate("google", {
+    failureRedirect: "/singin"
+  }), //we authenticate the user locally and if there is any problem we send them back to the login page
+  function(req, res) {
+    res.redirect("/dashboard"); //successful authentication and we send them to the dashboard route (to app.get /dashboard)
+  }
+);
+
+
+
+
+
+
+
+
+// PAGES ROUTE
 app.get("/", function(req, res) {
   res.render("index");
 });
@@ -131,15 +194,6 @@ app.get("/logout", function(req, res) { //here we deauthenticate the user and en
     }
   });
 });
-
-
-
-
-
-
-
-
-
 
 
 

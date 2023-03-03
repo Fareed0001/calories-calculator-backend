@@ -13,3 +13,44 @@ MONGOOSE DATABASE
 - in terminal enter mongod to start mongoose database server connection
 - in another terminal enter mongosh so as to start your new database, use "show dbs" to see if your database as been successfully added to the list of databases
 - check robo3t to monitor changes in database
+
+AUTHENTICATION USING PASSPORT, PASSPORT-LOCAL-MONGOSE AND SESSION 
+- require the 3 packages
+- use session ie (app.use(session({) and set the secret key as a variable in the .env file 
+- initialize the session ie (app.use(passport.initialize()), app.use(passport.session());)
+- use passportLocalMongoose as a plugin for the mongoose database ie (userSchema.plugin(passportLocalMongoose), userSchema.plugin(findOrCreate);)
+- use the passport strategy ie (passport.use(User.createStrategy());) 
+- create and destroy cookie using passport.serializeUser and passport.deserializeUser method
+- use mongooseModel ie (User) .register method to add new users to the database 
+- use passport.authenticate to authenticate new user in register and login routes before sending them to the dashboard to verufy their authentication 
+- in dashboard route, check if users are authenticated and send them to their respective routes
+
+AUTHENTICATION USING GOOGLE OAUTH 2.0
+- to create an application using google console (from doc @ https://www.passportjs.org/packages/passport-google-oauth20/) https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project
+- inside google console, create a project (right top mid)
+- name the project, select external (meaning the app is available for any user to test)
+- enter the app name and support email (your mail), also you can put a logo so the user knows what app is asking for permission
+- next page is for scopes, here you select what data you wish to collect from the user (email and profile)
+- back on the credentials page, select create credential (top mid), then select OAuth client Id
+- inside select web application and give it a name (Calories Calculator), then the authorized javascript origins (http://localhost:3000)
+- next is the route on our server that google makes people that have been authenticated return to so that we can authenticate them and save their cookies and details ie Authorised redirect URIs (http://localhost:3000/auth/google/caloriesCalculator)
+- next you create a client id and a client secret that you should keep in your .env file
+
+APPLYING GOOGLE OAUTH 
+- in the signin and signup page, set the google button href to target the authentication link ie (href="/auth/google")
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
