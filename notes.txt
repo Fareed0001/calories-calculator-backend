@@ -6,7 +6,7 @@ FOR SUBSEQUENT VERSION control- (git init) to initiate git
 - (git add .) to add everything in the project directory
 - (git status) to confirm if the files have been added to the staging area
 - (git commit -m "first upload") to commit the stages files 
-- git push -u origin main
+- git push origin main
 
 MONGOOSE DATABASE
 - after creating a schema and a model to follow that schema, subsequent mongoose codes are added
@@ -38,7 +38,9 @@ AUTHENTICATION USING GOOGLE OAUTH 2.0
 
 APPLYING GOOGLE OAUTH 
 - in the signin and signup page, set the google button href to target the authentication link ie (href="/auth/google")
-- 
+- in app.js, create new gooogle strategy. And inside, store the google user details onto the userDetail document 
+- create an app.get method to authenticate users using their profile and email 
+
 
 
 
