@@ -50,8 +50,13 @@ AUTHENTICATION USING PASSPORT-FACEBOOK
 - you will see you AppId and AppSecrets, copy and paste them into the .env file
 - fill in the boxes and scroll down, your will see add plateform, select that and choose website
 - input the web url (http://localhost:3000/) and hit save changes
+- in the left dashboard, under facebook login, hit quick start 
+- select web, 1: http://localhost:3000/
 
 APPLYING PASSPORT-FACEBOOK
+- in the signin and signup page, set the facebook button href to target the authentication link ie (href="/auth/facebook")
+- in app.js, create new facebook strategy. And inside, store the facebook user details onto the userDetail document 
+- create an app.get method to authenticate users using their facebookID
 
 
 
