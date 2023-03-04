@@ -106,13 +106,38 @@ passport.use(new GoogleStrategy({
     });
     newUser.save();
     
-    
     return cb(err, user);
   });
 }
 ));
 
+//facebook strategy. code from https://www.passportjs.org/packages/passport-facebook/
+passport.use(new FacebookStrategy({ //this will create a new facebook strategy
+  clientID: process.env.FACEBOOK_APP_ID, //the clientID stored in the .env file
+  clientSecret: process.env.FACEBOOK_APP_SECRET, //the clientSecret stored in the .env file
+  callbackURL: "http://localhost:3000/auth/facebook/caloriesCalculator"
+},
+function(accessToken, refreshToken, profile, cb) { //here is where facebook sends back the access token that will allow us the user data
+  console.log(profile); //this is to log the user profile that we get back from the get request on auth/facebook route
+  User.findOrCreate({ //we use the data we got back from facebook ie username to find a user if they exist, if they dont to create one
+    facebookId: profile.id //when a new user gets created, this finds if the user facebook record already exists in our database, in which case we save all the data associated with that user otherwise we create on our database and save that information for the future
+  }, function(err, user) {
+    const name = profile.displayName;
 
+    const newUser = new userDetail ({ //This would save the new user details into userDetail document
+      newUser_id: user.id,  
+      firstname: name.split(" ")[0], //this slits the username into its first and last name components
+      lastname: name.split(" ")[1],
+      username:  profile.displayName,
+      password: profile.id,
+      picture: profile.profileUrl
+    });
+    newUser.save();
+
+    return cb(err, user);
+  });
+}
+));
 
 
 
@@ -138,7 +163,22 @@ app.get("/auth/google/caloriesCalculator", //this is the route you provided in t
   }
 );
 
+//authenticating requests using facebook. code from (https://www.passportjs.org/packages/passport-facebook/)
+app.get("/auth/facebook",
+  passport.authenticate('facebook') //this will authenticate the user using facebook strategy. we are telling facebook that we need the users profile which includes their username and id
+  //the code creates a pop-up that allows users sign in into their facebook accounts
+);
 
+//after user is authenticated using facebook, they are sent to this route
+app.get("/auth/facebook/caloriesCalculator", //this is the route you provided in the facebook app console under credentials
+  passport.authenticate("facebook", {
+    failureRedirect: "/signin"
+  }), //we authenticate the user locally and if there is any problem we send them back to the login page
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/dashboard"); //successful authentication and we send them to the secret route (to app.get /secrets)
+  }
+);
 
 
 

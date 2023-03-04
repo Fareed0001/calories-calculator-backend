@@ -41,9 +41,17 @@ APPLYING GOOGLE OAUTH
 - in app.js, create new gooogle strategy. And inside, store the google user details onto the userDetail document 
 - create an app.get method to authenticate users using their profile and email 
 
+AUTHENTICATION USING PASSPORT-FACEBOOK 
+- before using it, you must register an application with facebook (https://developers.facebook.com/apps/) to enter your dashboard on facebook developers panel
+- when you click on create app, it will ask you for app type select it and name the app (ie Calories Calculator)
+- enter your facebook password (ie waec)
+- select the facebook login
+- on the left panel, select settings, in the dropdown menu select basic
+- you will see you AppId and AppSecrets, copy and paste them into the .env file
+- fill in the boxes and scroll down, your will see add plateform, select that and choose website
+- input the web url (http://localhost:3000/) and hit save changes
 
-
-
+APPLYING PASSPORT-FACEBOOK
 
 
 
